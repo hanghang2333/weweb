@@ -69,6 +69,77 @@
 7
 </span-->
 </li>
+<li><span class="title">
+<a href="#第八章-字体和颜色" title="第八章 字体和颜色">第八章 字体和颜色</a>
+</span>
+<!--span class="number">
+8
+</span-->
+<ul>
+<li><ul>
+<li><span class="title">
+<a href="#字体属性表格" title="字体属性表格">字体属性表格</a>
+</span>
+<!--span class="number">
+9
+</span-->
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><span class="title">
+<a href="#第九章-盒元素" title="第九章 盒元素">第九章 盒元素</a>
+</span>
+<!--span class="number">
+10
+</span-->
+<ul>
+<li><ul>
+<li><span class="title">
+<a href="#盒元素表格" title="盒元素表格">盒元素表格</a>
+</span>
+<!--span class="number">
+11
+</span-->
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><span class="title">
+<a href="#第十章-div-和span" title="第十章 div 和span">第十章 div 和span</a>
+</span>
+<!--span class="number">
+12
+</span-->
+</li>
+<li><span class="title">
+<a href="#第十一章-布局和定位" title="第十一章 布局和定位">第十一章 布局和定位</a>
+</span>
+<!--span class="number">
+13
+</span-->
+<ul>
+<li><ul>
+<li><span class="title">
+<a href="#布局表格" title="布局表格">布局表格</a>
+</span>
+<!--span class="number">
+14
+</span-->
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><span class="title">
+<a href="#第十二章-html5" title="第十二章 HTML5">第十二章 HTML5</a>
+</span>
+<!--span class="number">
+15
+</span-->
+</li>
 </ul>
 </li>
 </ul>
@@ -112,7 +183,160 @@
 &lt;/html&gt;</code></li></ol><h4 id="第七章-css"><a name="第七章-css" href="#第七章-css"></a>第七章 css</h4><ol>
 <li>在html中的开始和结束标记<code>&lt;style&gt;...&lt;/style&gt;</code>;位置在<code>&lt;head&gt;</code>中</li><li>css基本形式；元素+{属性:值；}，设置相同格式时可以合并元素,元素中间加逗号如.h1,h2</li><li>属性，<ul>
 <li>字体颜色；color:maroon;茶红色 gray 灰色</li><li>背景颜色；background</li><li>字体样式；font-family:sans-serif；</li><li>加下划线页面宽；border-bottom:1px solid black;粗细为1像素，实线，黑色，</li><li>文本加下划线；text-decoration:underline;</li></ul>
-</li><li>创建css连接；不包含style元素。建立css文本；建立外部连接，<code>&lt;link rel="stylesheet" href="../new1.css"&gt;</code>,文件名不能空格。</li><li>在HTML中增加class属性，并且在css中设定格式。</li><li><code>http://jigsaw.w3.org/css-validator/</code>验证css文件</li></ol>
+</li><li>创建css连接；不包含style元素。建立css文本；建立外部连接，<code>&lt;link rel="stylesheet" href="../new1.css"&gt;</code>,文件名不能空格。</li><li>在HTML中增加class属性，并且在css中设定格式。</li><li><code>http://jigsaw.w3.org/css-validator/</code>验证css文件</li></ol><h4 id="第八章-字体和颜色"><a name="第八章-字体和颜色" href="#第八章-字体和颜色"></a>第八章 字体和颜色</h4><h6 id="字体属性表格"><a name="字体属性表格" href="#字体属性表格"></a>字体属性表格</h6><table>
+<thead>
+<tr>
+<th>字体属性</th>
+<th>值</th>
+<th>例子</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>font-family字体</code></td>
+<td>“5种字体系列:<code>Serif</code>用于新闻报纸，有内衬等;<code>Sans-serif</code>用于计算机，无内衬;<code>Monospace</code>固定的间距，用于软件代码；<code>Cursive</code>和<code>fantasy</code>字体有个性，拟手写，可以用于海报标题。”</td>
+<td><code>font-family:  Georgia</code>,<code>"Times New Roman"</code>, <code>Times</code>, <code>serif</code>;</td>
+</tr>
+<tr>
+<td><code>font-size</code>字号</td>
+<td>4种表示方法:像素 <code>14px</code>；<code>em</code> 相当于父元素字体的比例;百分数；关键字 <code>small</code> <code>mediu</code> <code>large</code> <code>x-large</code>等;</td>
+<td></td>
+</tr>
+<tr>
+<td><code>color</code>字体颜色</td>
+<td>4种表示方法:指定颜色大约150种；<code>rgb</code>百分比或固定数值rgb(23 34 56)；十六进制表示颜色<code>#cccccc</code>;</td>
+<td></td>
+</tr>
+<tr>
+<td><code>font-weight</code></td>
+<td><code>bold</code>;<code>normal</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>font-style</code> 字体风格</td>
+<td><code>italic</code>斜体；<code>not italic</code>;   <code>oblique</code>倾斜；<code>not oblique</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>text-decoration</code> 文本装饰</td>
+<td><code>line-through</code>  删除线；   <code>underline</code>   下划线；   <code>overline</code>    上划线；  <code>none</code></td>
+</tr>
+<tr>
+<td><code>font-variant</code> 大小写</td>
+<td><code>normal</code>；<code>small-caps</code>把小写转为大写。</td>
+<td></td>
+</tr>
+<tr>
+<td><code>line-height</code> 行高</td>
+<td><code>px</code>:%;<code>em</code>;关键字；1(1这个具体数值代表行高是的其自己大小的1倍)</td>
+<td></td>
+</tr>
+<tr>
+<td><code>font:font-style</code></td>
+<td><code>font-variant</code> <code>font-weight</code> <code>font-size/line-height</code> <code>font-family</code></td>
+</tr>
+</tbody>
+</table><p>2.内置css规则<code>@font</code>；<code>@import</code>；<code>@media</code>。</p><pre><code data-origin="<pre><code>@font-face {
+font-family: &quot;Emblema One&quot;;
+src: url(&quot;http://wickedlysmart.com/hfhtmlcss/chapter8/journal/EmblemaOne-Regular.woff&quot;), 
+     url(&quot;http://wickedlysmart.com/hfhtmlcss/chapter8/journal/EmblemaOne-Regular.ttf&quot;); 
+     }
+</code></pre>">@font-face {
+font-family: "Emblema One";
+src: url("http://wickedlysmart.com/hfhtmlcss/chapter8/journal/EmblemaOne-Regular.woff"), 
+     url("http://wickedlysmart.com/hfhtmlcss/chapter8/journal/EmblemaOne-Regular.ttf"); 
+     }
+</code></pre><h4 id="第九章-盒元素"><a name="第九章-盒元素" href="#第九章-盒元素"></a>第九章 盒元素</h4><h6 id="盒元素表格"><a name="盒元素表格" href="#盒元素表格"></a>盒元素表格</h6><table>
+<thead>
+<tr>
+<th>盒元素属性</th>
+<th>盒元素属性</th>
+<th>盒元素属性</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>padding</code> 内边距</td>
+<td><code>padding-top/right/bottom/left</code>:<code>px</code>;简便写法:从<code>top</code>相当于0点顺时针写</td>
+<td>padding: 0px上下 30px左右;</td>
+</tr>
+<tr>
+<td><code>border</code> 边框</td>
+<td><code>border-color:white/rgb()/#ccc</code>;     <code>border-width: 1px / thin ,medium，thick</code>;         <code>border-style:dashed</code>破折线/<code>dotted</code>虚线/<code>solid</code>实线/<code>double</code>双线/<code>groove</code>槽线/<code>inset</code>内凹/<code>outset</code>外凸/<code>rigde</code>脊线;   <code>border-redius</code>:<code>px</code>指定圆角，半径长度</td>
+<td><code>border</code>:<code>thin</code> <code>solid</code> <code>black</code>;</td>
+</tr>
+<tr>
+<td><code>margin</code>外间距</td>
+<td><code>margin-top/right/bottom/left:px</code>;简便写法:从<code>top</code>相当于0点顺时针写</td>
+<td>margin: 0px上下 30px左右;</td>
+</tr>
+<tr>
+<td><code>background</code> 背景</td>
+<td><code>background-color</code>； <code>background-image url</code>(相对路径)； <code>background-repeat：no-repeat repeat-x repeat-y inherit</code>；<code>background-position：top/right/bottom/left</code>;</td>
+<td><code>background:white url(images/cocktail.gif) repeat-x</code>;</td>
+</tr>
+<tr>
+<td><code>wight</code></td>
+<td>内容区文本宽度</td>
+<td><code>px:%</code>;</td>
+<td></td>
+</tr>
+<tr>
+<td><code>text-align</code>只能在块元素上使用</td>
+<td><code>center</code></td>
+</tr>
+</tbody>
+</table><ol>
+<li>选择不同的设备，两种方法，在css中增加<code>@media</code>规则，或者在HTML中line元素内直接添加<code>media=""</code>.<pre><code data-origin="<pre><code> &amp;lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; href=&quot;lounge.css&quot; 
+   media=&quot;screen and (min-width: 481px)&quot;&amp;gt;
+ &amp;lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; href=&quot;lounge-mobile.css&quot; 
+   media=&quot;screen and (max-width: 480px)&quot;&amp;gt;
+ &amp;lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; href=&quot;lounge-print.css&quot; media=&quot;print&quot;&amp;gt;
+</code></pre>"> &lt;link type="text/css" rel="stylesheet" href="lounge.css" 
+   media="screen and (min-width: 481px)"&gt;
+ &lt;link type="text/css" rel="stylesheet" href="lounge-mobile.css" 
+   media="screen and (max-width: 480px)"&gt;
+ &lt;link type="text/css" rel="stylesheet" href="lounge-print.css" media="print"&gt;
+</code></pre>@media 指定样式{元素{}}</li></ol><h4 id="第十章-div-和span"><a name="第十章-div-和span" href="#第十章-div-和span"></a>第十章 div 和span</h4><pre><code data-origin="<pre><code>   div 块元素，相当于一个容器方便多个元素统一设置格式；span 内联元素，相当于一个特例，从其他元素中单独设置格式，配合class元素使用可以设置一批相似元素格式
+</code></pre>">   div 块元素，相当于一个容器方便多个元素统一设置格式；span 内联元素，相当于一个特例，从其他元素中单独设置格式，配合class元素使用可以设置一批相似元素格式
+</code></pre><ol>
+<li>css中元素的显示方法<ul>
+<li>单一元素 如p;</li><li>多个元素同时使用一个规则，中间用逗号隔开 如h1,h2;</li><li>某个类 类名之前是句点  如 p.header;</li><li>某个id id名之前是#   如p#header;</li><li>子孙的方法 从父元素到子元素，中间空格隔开  如p img#cat；</li><li>自定义css规则 开头是@</li><li>元素状态 如a:link { color: #007e7e; }</li></ul>
+</li><li><p>超文本连接元素状态:link未访问；visited已访问；hover悬停；focus焦点；active活动；</p>
+<pre><code data-origin="<pre><code>body p a:link { color: #007e7e; }
+body p a:visited { color: #333333; }
+</code></pre>">body p a:link { color: #007e7e; }
+body p a:visited { color: #333333; }
+</code></pre></li><li><p>层叠 样式表的优先规则:首要规则，作者&gt;读者&gt;浏览器；其次，选择器特定性越大越优先 计算法则:包含id加100，包含class或伪类加10，包含元素加1。比数大小。最后，在同一个css中看位置，越靠下越优先选择。</p>
+</li></ol><h4 id="第十一章-布局和定位"><a name="第十一章-布局和定位" href="#第十一章-布局和定位"></a>第十一章 布局和定位</h4><h6 id="布局表格"><a name="布局表格" href="#布局表格"></a>布局表格</h6><table>
+<thead>
+<tr>
+<th>布局元素元素</th>
+<th>值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>float 浮动</td>
+<td>left；right</td>
+</tr>
+<tr>
+<td>clear</td>
+<td>left；right</td>
+</tr>
+<tr>
+<td>position</td>
+<td>absolute</td>
+</tr>
+<tr>
+<td>display</td>
+<td></td>
+</tr>
+<tr>
+<td>vertical-align</td>
+</tr>
+</tbody>
+</table><h4 id="第十二章-html5"><a name="第十二章-html5" href="#第十二章-html5"></a>第十二章 HTML5</h4>
 
 <footer style="position:fixed; font-size:.8em; text-align:right; bottom:0px; margin-left:-25px; height:20px; width:100%;">generated by <a href="http://pad.haroopress.com" target="_blank">haroopad</a></footer>
 </body>
