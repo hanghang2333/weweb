@@ -139,6 +139,45 @@
 <!--span class="number">
 15
 </span-->
+<ul>
+<li><span class="title">
+<a href="#html5新增元素" title="HTML5新增元素">HTML5新增元素</a>
+</span>
+<!--span class="number">
+16
+</span-->
+</li>
+</ul>
+</li>
+<li><span class="title">
+<a href="#第十三章-表格" title="第十三章 表格">第十三章 表格</a>
+</span>
+<!--span class="number">
+17
+</span-->
+<ul>
+<li><span class="title">
+<a href="#表格元素总结" title="表格元素总结">表格元素总结</a>
+</span>
+<!--span class="number">
+18
+</span-->
+</li>
+<li><span class="title">
+<a href="#web表单元素" title="web表单元素">web表单元素</a>
+</span>
+<!--span class="number">
+19
+</span-->
+</li>
+</ul>
+</li>
+<li><span class="title">
+<a href="#第十四章-表单交互" title="第十四章 表单交互">第十四章 表单交互</a>
+</span>
+<!--span class="number">
+20
+</span-->
 </li>
 </ul>
 </li>
@@ -336,7 +375,150 @@ body p a:visited { color: #333333; }
 <td>vertical-align</td>
 </tr>
 </tbody>
-</table><h4 id="第十二章-html5"><a name="第十二章-html5" href="#第十二章-html5"></a>第十二章 HTML5</h4>
+</table><ol>
+<li>块元素从上到下，外边距会折叠，间距为较大的一个外边距；内联元素从左上到右下，会适应浏览器大小，外边距不会折叠。</li><li>布局设计：流体布局，随浏览器大小改变；冻结布局，锁定元素，在body增加一个id，并在css中制定其宽度；凝胶布局，在冻结基础上在设置外边距左右宽为auto。css表格布局，创建各种id，然后display属性，设置table，table-row，table-cell，表格边距只能在table元素下设置。</li><li>内联元素可以围绕float属性周围，用于分栏，不会感知absolute属性值，用于添加图标，不能再使用clear属性。</li><li>position属性有4个值：static，absolute，fixed，relative</li></ol><h4 id="第十二章-html5"><a name="第十二章-html5" href="#第十二章-html5"></a>第十二章 HTML5</h4><h5 id="html5新增元素"><a name="html5新增元素" href="#html5新增元素"></a>HTML5新增元素</h5><table>
+<thead>
+<tr>
+<th>HTML5新增元素</th>
+<th>属性</th>
+<th>例子</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>header 首部 放在页面顶部</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>footer 底部</td>
+</tr>
+<tr>
+<td>aside 边栏</td>
+</tr>
+<tr>
+<td>nav 导航</td>
+<td><code>&lt;nav&gt; &lt;ul&gt;  &lt;li&gt;&lt;a href="index.html"&gt;HOME&lt;/a&gt;&lt;/li&gt;  &lt;li class="selected"&gt;&lt;a href="blog.html"&gt;BLOG&lt;/a&gt;&lt;/li&gt; &lt;/ul&gt; &lt;/nav&gt;</code></td>
+</tr>
+<tr>
+<td>article  独立的组成部分 博客的帖子</td>
+</tr>
+<tr>
+<td>section 主体性内容分组 整体的</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>time 日期和时间datetime</td>
+<td><code>&lt;time datetime="2012-03-10"&gt;3/10/2012&lt;/time&gt;</code></td>
+</tr>
+<tr>
+<td>video 增加视频</td>
+<td>controls src autoplay preload poster width height loop  p619</td>
+<td><code>&lt;video controls autoplay width="512" height="288"&gt;  &lt;source src="video/tweetsip.mp4"&gt;&lt;source src="video/tweetsip.webm"&gt;  &lt;source src="video/tweetsip.ogv"&gt;  &lt;p&gt;Sorry, your browser doesn't support the video element.&lt;/p&gt; &lt;/video&gt;</code></td>
+</tr>
+<tr>
+<td>progress 显示任务完成进度</td>
+</tr>
+<tr>
+<td>mark 突出显示某些文本</td>
+</tr>
+<tr>
+<td>meter 显示某个范围的度量</td>
+</tr>
+<tr>
+<td>audio 包含声音内容</td>
+</tr>
+<tr>
+<td>canvas 在页面中显示javascript绘制图像和动画</td>
+</tr>
+</tbody>
+</table><ol>
+<li>表格总结</li><li>HTML5规范允许采用任何视频格式，具体支持哪些格式由浏览器实现来确定。</li></ol><h4 id="第十三章-表格"><a name="第十三章-表格" href="#第十三章-表格"></a>第十三章 表格</h4><h5 id="表格元素总结"><a name="表格元素总结" href="#表格元素总结"></a>表格元素总结</h5><table>
+<thead>
+<tr>
+<th>表格元素</th>
+<th>表格元素</th>
+<th>表格元素</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&lt;table&gt;</code>表格</td>
+<td>margin;border;caption-side标题位置;border-spacing:0px  5px;单元格的边框间距，在table中设置统一的；border-collapse边框重叠</td>
+<td>table {margin-left: 20px; margin-right:20px; border: thin solid black; caption-side: bottom;border-collapse: collapse;}</td>
+</tr>
+<tr>
+<td><code>&lt;tr&gt;</code>每一行</td>
+</tr>
+<tr>
+<td><code>&lt;th&gt;</code>表头</td>
+<td>border;padding;</td>
+<td></td>
+</tr>
+<tr>
+<td><code>&lt;td&gt;</code>单元格</td>
+<td>border;padding;rowspan跨行；colspan跨列;</td>
+<td></td>
+</tr>
+<tr>
+<td><code>&lt;caption&gt;</code>标题</td>
+<td>font;padding</td>
+<td>caption {  font-style:       italic;  padding-top:      8px;}</td>
+</tr>
+<tr>
+<td>ul/ol/li无序、有序、列项</td>
+<td>list-style-type;list-style-image;</td>
+<td>disc默认的；circle圆形；square方形；none. list-style-image: url(images/backpack.gif);</td>
+</tr>
+</tbody>
+</table><h5 id="web表单元素"><a name="web表单元素" href="#web表单元素"></a>web表单元素</h5><table>
+<thead>
+<tr>
+<th>web表单元素</th>
+<th>属性</th>
+<th>值/例子</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>form 表单</td>
+<td>action表单数据发向哪里; method什么方法</td>
+<td><code>&lt;form action="http://starbuzzcoffee.com/processorder.php" method="post"&gt;&lt;/form&gt;</code></td>
+</tr>
+<tr>
+<td>input文本、提交、单选、复选、数字、范围、颜色、日期、email、tel、url、输入元素；viod元素</td>
+<td>type; name; value；check 选定的  maxlength文本输入字符最大值 placeholder 给予提示； required 必须填写的内容</td>
+<td><code>&lt;input type="password" name=" secret"&gt;     &lt;input type="color"&gt;&lt;input type="range" min="0" max="20" step="4"&gt;  &lt;input type="text" name="name" value=""&gt;    &lt;input type="radio" name="beantype" value="ground" checked&gt;      &lt;input type="number" name="bags" min="1" max="10"&gt;           &lt;input type="date" name="date"&gt;    &lt;input type="checkbox" name="extras[]" value="catalog" checked&gt;    &lt;input type="tel" name="phone" value=""&gt;       &lt;input type="submit" value="Order Now"&gt;</code></td>
+</tr>
+<tr>
+<td>textarea多行文本输入    name;</td>
+<td>rows行；cols列，一行有多少字符;</td>
+<td><code>&lt;textarea name="comments" rows="10" cols="48"&gt;&lt;/textarea&gt;</code></td>
+</tr>
+<tr>
+<td>select 菜单控件输入</td>
+<td>name;</td>
+<td><code>&lt;select name="beans"&gt;        &lt;option value="Kenya"&gt;Kenya&lt;/option&gt;       &lt;/select&gt;</code></td>
+</tr>
+<tr>
+<td>option元素表示菜单项</td>
+<td>value</td>
+<td></td>
+</tr>
+<tr>
+<td>fieldset</td>
+<td>对于单选和多选分组</td>
+<td></td>
+</tr>
+<tr>
+<td>legend</td>
+<td>提供标签</td>
+</tr>
+</tbody>
+</table><ol>
+<li>table在最外层，其次是tr表示每行从上到下，每一行嵌套单元格td从左到右表示列；另外表头用th表示，可以在第一列，也可以在第一行。空白的单元格用表示。</li><li>HTML表格创建清单；css表格创建页面布局。</li><li>HTML中注释表示方法<!--注释内容-->;css中注释/<em>注释内容</em>/</li><li>td内可以嵌套表格</li><li>nth-child伪类，其状态为一个元素相对于兄弟元素的数字序列，属性分别是；p:nth-child(even)偶数段；p:nth-child(odd)；奇数段;或者用n表示(2n)偶数;(2n+1)奇数;</li></ol><h4 id="第十四章-表单交互"><a name="第十四章-表单交互" href="#第十四章-表单交互"></a>第十四章 表单交互</h4><ol>
+<li>表格总结</li><li>多选中在名字增加[]提示表单变量可能包含多个值，PHP脚本的语言中</li><li>post 和get 都是将你的表单数据行浏览器发送到服务器，post打包表单变量，在后台发送，不会被用户看到，搜索得到的结果不能添加标签，如一些密码订单等，get把这些数据追加到URL后面，搜索得到的结果可以添加书签。</li><li>需要上传文件时，input的属性type=”file” 前提用post方法</li></ol>
 
 <footer style="position:fixed; font-size:.8em; text-align:right; bottom:0px; margin-left:-25px; height:20px; width:100%;">generated by <a href="http://pad.haroopress.com" target="_blank">haroopad</a></footer>
 </body>
