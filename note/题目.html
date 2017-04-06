@@ -14,12 +14,18 @@
 <li><ul>
 <li><ul>
 <li><ul>
-<li><ul>
 <li><span class="title">
 <a href="#82" title="82">82</a>
 </span>
 <!--span class="number">
 0
+</span-->
+</li>
+<li><span class="title">
+<a href="#153" title="153">153</a>
+</span>
+<!--span class="number">
+1
 </span-->
 </li>
 </ul>
@@ -30,18 +36,61 @@
 </li>
 </ul>
 </li>
-</ul>
-</li>
 
 </ul>
-<p></p><h6 id="82"><a name="82" href="#82"></a>82</h6><p>给定一个排好序了的链表，要求将链表内的重复元素都去掉。如:<br>1-&gt;2-&gt;2-&gt;3变成1-&gt;3<br>1-&gt;1-&gt;2-&gt;2-&gt;4变成4<br>思路:就是遍历了肯定，因为考虑到重复元素是都要去掉了，也就是连头节点也可能会去掉，那么我们就额外增加一个prehead节点放在头节点前面作为最开始的节点并指向头节点。而后用while循环去遍历，碰到节点值一样的就向前移动，那么最后就会停止在重复元素的最后一个节点上，这个时候去看prehead指向的下一个节点是否与之相同，相同意味着该元素没有重复的，不同则意味着该元素是重复节点的最后一个。<br>这道题目主要体会下设置哨兵节点(在这里是prehead节点)的作用和while循环遍历链表需要注意的事项。<br>```# Definition for singly-linked list.<br>class ListNode(object):<br>     def <strong>init</strong>(self, x):<br>         self.val = x<br>         self.next = None</p><p>class Solution(object):<br>    def deleteDuplicates(self, head):<br>        “””<br>        :type head: ListNode<br>        :rtype: ListNode<br>        “””<br>        if head == None:<br>            return head<br>        prehead = ListNode(12345)<br>        prehead.next = head<br>        pre = prehead<br>        current = head<br>        while current!=None:<br>            while current.next!=None and current.val == current.next.val:<br>                current=current.next<br>            if pre.next == current:<br>                pre = pre.next<br>            else:<br>                pre.next = current.next<br>            current = current.next<br>        return prehead.next     </p><pre><code data-origin="<pre><code>
-#####153
-给了一个排序后又在某个点上旋转了的数组，求数组里最小元素值。
-旋转:如0,1,2,3,4,5,6,7 以4为点旋转为4,5,6,7,0,1,2,3. 最小元素为0
+<p></p><h5 id="82"><a name="82" href="#82"></a>82</h5><p>给定一个排好序了的链表，要求将链表内的重复元素都去掉。如:<br>1-&gt;2-&gt;2-&gt;3变成1-&gt;3<br>1-&gt;1-&gt;2-&gt;2-&gt;4变成4<br>思路:就是遍历了肯定，因为考虑到重复元素是都要去掉了，也就是连头节点也可能会去掉，那么我们就额外增加一个prehead节点放在头节点前面作为最开始的节点并指向头节点。而后用while循环去遍历，碰到节点值一样的就向前移动，那么最后就会停止在重复元素的最后一个节点上，这个时候去看prehead指向的下一个节点是否与之相同，相同意味着该元素没有重复的，不同则意味着该元素是重复节点的最后一个。<br>这道题目主要体会下设置哨兵节点(在这里是prehead节点)的作用和while循环遍历链表需要注意的事项。</p><pre class="python hljs"><code class="python" data-origin="<pre><code class=&quot;python&quot;>class ListNode(object):
+     def __init__(self, x):
+         self.val = x
+         self.next = None
 
-思路:输入的是数组，其实直接min()就可以。这是python的一个语法糖。不过需要注意min()方法本质上是遍历，效率是O(n).我们使用二分查找的思路。需要观察旋转后的数组的特性。如果中间点比两头都大，则应该取右边窗口，比两头都小，取右边窗口，否则肯定是在0,1,2,3这样的区域里，自然是取左边窗口。
-```python
 class Solution(object):
+    def deleteDuplicates(self, head):
+        &quot;&quot;&quot;
+        :type head: ListNode
+        :rtype: ListNode
+        &quot;&quot;&quot;
+        if head == None:
+            return head
+        prehead = ListNode(12345)
+        prehead.next = head
+        pre = prehead
+        current = head
+        while current!=None:
+            while current.next!=None and current.val == current.next.val:
+                current=current.next
+            if pre.next == current:
+                pre = pre.next
+            else:
+                pre.next = current.next
+            current = current.next
+        return prehead.next
+</code></pre>"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ListNode</span><span class="hljs-params">(object)</span>:</span>
+     <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, x)</span>:</span>
+         self.val = x
+         self.next = <span class="hljs-keyword">None</span>
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span><span class="hljs-params">(object)</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">deleteDuplicates</span><span class="hljs-params">(self, head)</span>:</span>
+        <span class="hljs-string">"""
+        :type head: ListNode
+        :rtype: ListNode
+        """</span>
+        <span class="hljs-keyword">if</span> head == <span class="hljs-keyword">None</span>:
+            <span class="hljs-keyword">return</span> head
+        prehead = ListNode(<span class="hljs-number">12345</span>)
+        prehead.next = head
+        pre = prehead
+        current = head
+        <span class="hljs-keyword">while</span> current!=<span class="hljs-keyword">None</span>:
+            <span class="hljs-keyword">while</span> current.next!=<span class="hljs-keyword">None</span> <span class="hljs-keyword">and</span> current.val == current.next.val:
+                current=current.next
+            <span class="hljs-keyword">if</span> pre.next == current:
+                pre = pre.next
+            <span class="hljs-keyword">else</span>:
+                pre.next = current.next
+            current = current.next
+        <span class="hljs-keyword">return</span> prehead.next
+</code></pre><h5 id="153"><a name="153" href="#153"></a>153</h5><p>给了一个排序后又在某个点上旋转了的数组，求数组里最小元素值。<br>旋转:如0,1,2,3,4,5,6,7 以4为点旋转为4,5,6,7,0,1,2,3. 最小元素为0</p><p>思路:输入的是数组，其实直接min()就可以。这是python的一个语法糖。不过需要注意min()方法本质上是遍历，效率是O(n).我们使用二分查找的思路。需要观察旋转后的数组的特性。如果中间点比两头都大，则应该取右边窗口，比两头都小，取右边窗口，否则肯定是在0,1,2,3这样的区域里，自然是取左边窗口。</p><pre class="python hljs"><code class="python" data-origin="<pre><code class=&quot;python&quot;>class Solution(object):
     def findMin(self, nums):
         &quot;&quot;&quot;
         :type nums: List[int]
@@ -65,37 +114,30 @@ class Solution(object):
             else:
                 right = middle
         return min(nums[left],nums[right])
-</code></pre>">
-#####153
-给了一个排序后又在某个点上旋转了的数组，求数组里最小元素值。
-旋转:如0,1,2,3,4,5,6,7 以4为点旋转为4,5,6,7,0,1,2,3. 最小元素为0
-
-思路:输入的是数组，其实直接min()就可以。这是python的一个语法糖。不过需要注意min()方法本质上是遍历，效率是O(n).我们使用二分查找的思路。需要观察旋转后的数组的特性。如果中间点比两头都大，则应该取右边窗口，比两头都小，取右边窗口，否则肯定是在0,1,2,3这样的区域里，自然是取左边窗口。
-```python
-class Solution(object):
-    def findMin(self, nums):
-        """
+</code></pre>"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span><span class="hljs-params">(object)</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">findMin</span><span class="hljs-params">(self, nums)</span>:</span>
+        <span class="hljs-string">"""
         :type nums: List[int]
         :rtype: int
-        """
+        """</span>
         length = len(nums)
-        if length == 0:
-            return -1
-        if length == 1:
-            return nums[0]
-        if length == 2:
-            return min(nums[0],nums[1]);
-        left = 0
-        right = length-1
-        while left&lt;right-1:
-            middle = (left+right)/2
-            if nums[middle]&lt;nums[right] and nums[middle]&lt;nums[left]:
+        <span class="hljs-keyword">if</span> length == <span class="hljs-number">0</span>:
+            <span class="hljs-keyword">return</span> -<span class="hljs-number">1</span>
+        <span class="hljs-keyword">if</span> length == <span class="hljs-number">1</span>:
+            <span class="hljs-keyword">return</span> nums[<span class="hljs-number">0</span>]
+        <span class="hljs-keyword">if</span> length == <span class="hljs-number">2</span>:
+            <span class="hljs-keyword">return</span> min(nums[<span class="hljs-number">0</span>],nums[<span class="hljs-number">1</span>]);
+        left = <span class="hljs-number">0</span>
+        right = length-<span class="hljs-number">1</span>
+        <span class="hljs-keyword">while</span> left&lt;right-<span class="hljs-number">1</span>:
+            middle = (left+right)/<span class="hljs-number">2</span>
+            <span class="hljs-keyword">if</span> nums[middle]&lt;nums[right] <span class="hljs-keyword">and</span> nums[middle]&lt;nums[left]:
                 right = middle
-            elif nums[middle]&gt;nums[right] and nums[middle]&gt;nums[left]:
+            <span class="hljs-keyword">elif</span> nums[middle]&gt;nums[right] <span class="hljs-keyword">and</span> nums[middle]&gt;nums[left]:
                 left = middle
-            else:
+            <span class="hljs-keyword">else</span>:
                 right = middle
-        return min(nums[left],nums[right])
+        <span class="hljs-keyword">return</span> min(nums[left],nums[right])
 </code></pre>
 
 <footer style="position:fixed; font-size:.8em; text-align:right; bottom:0px; margin-left:-25px; height:20px; width:100%;">generated by <a href="http://pad.haroopress.com" target="_blank">haroopad</a></footer>
