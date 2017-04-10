@@ -28,7 +28,35 @@
 1
 </span-->
 </li>
+<li><span class="title">
+<a href="#516" title="516">516</a>
+</span>
+<!--span class="number">
+2
+</span-->
+</li>
+<li><span class="title">
+<a href="#513" title="513">513</a>
+</span>
+<!--span class="number">
+3
+</span-->
+</li>
+<li><span class="title">
+<a href="#77" title="77">77</a>
+</span>
+<!--span class="number">
+4
+</span-->
+</li>
 </ul>
+</li>
+<li><span class="title">
+<a href="##" title="#">#</a>
+</span>
+<!--span class="number">
+5
+</span-->
 </li>
 </ul>
 </li>
@@ -138,6 +166,226 @@ class Solution(object):
             <span class="hljs-keyword">else</span>:
                 right = middle
         <span class="hljs-keyword">return</span> min(nums[left],nums[right])
+</code></pre><h5 id="516"><a name="516" href="#516"></a>516</h5><p>给定一个字符串，求其中最长的回文串长度。如给了”bbbab”则最长的为bbbb长度为4.给了abb则最大长度为2.这里的回文串可以是不连续的，也就是类似于从字符串中取一些字符使得其是回文的。<br>动态规划的思路:<br>假设一个二维数组<code>dp[][]</code>,其中<code>dp[i][j]</code>表示从第i个字符串到到第j个字符串的最大回文长度。那么可知，如果第i和第j的字符一样，那么<code>dp[i][j]=dp[i+1][j-1]+2</code>,即因为两端字符一样，所以这两个显然可以加在里面子字符串最大回文两端，那么长度也就增加2.如果不一样，则<code>dp[i][j]=max(dp[i+1][j],dp[i][j-1])</code>.<br>可以看到其实二维数组只需要计算上三角即可，因为i肯定是要小于等于j的。也可以理解成下三角部分都是0因为其中不可能有回文串.<br>那么该如何一步一步迭代计算呢，首先可以看到<code>dp[i][j]</code>只和<code>dp[i+1][j-1]，dp[i+1][j],dp[i][j-1]</code>位置的元素相关，用二维数组画一下可以只和其左侧下侧和左下侧元素相关(i为纵轴坐标j为横轴坐标)。由此可以i的循环需要从最右侧可以，而j的循环则需要从i+1开始直到最后。这样才能保证依赖关系一直满足。其中<code>dp[i][i]</code>的值都是1.</p><pre><code data-origin="<pre><code>class Solution(object):
+    def longestPalindromeSubseq(self, s):
+        &quot;&quot;&quot;
+        :type s: str
+        :rtype: int
+        &quot;&quot;&quot;
+        length =len(s)
+        res = [[-1 for i in range(length)] for j in range(length)]
+        for i in range(length-1,-1,-1):
+            res[i][i]=1
+            for j in range(i+1,length):
+                if s[i]==s[j]:
+                    res[i][j]=res[i+1][j-1]+2
+                else:
+                    res[i][j] = max(res[i+1][j],res[i][j-1])
+        return res[0][length-1]
+</code></pre>">class Solution(object):
+    def longestPalindromeSubseq(self, s):
+        """
+        :type s: str
+        :rtype: int
+        """
+        length =len(s)
+        res = [[-1 for i in range(length)] for j in range(length)]
+        for i in range(length-1,-1,-1):
+            res[i][i]=1
+            for j in range(i+1,length):
+                if s[i]==s[j]:
+                    res[i][j]=res[i+1][j-1]+2
+                else:
+                    res[i][j] = max(res[i+1][j],res[i][j-1])
+        return res[0][length-1]
+</code></pre><p>这段程序可以得出结果，但是效率上有些低，尤其是，其实没有必要真的保存整个二维数组，在计算某一项时其实只需要和其相邻的那几个位置的值。以此为思路，可以用滚动数组来优化。如下，不过能够给出上面这个程序其实也就可以了。</p><pre class="python hljs"><code class="python" data-origin="<pre><code class=&quot;python&quot;>class Solution(object):
+    def longestPalindromeSubseq(self, s):
+        &quot;&quot;&quot;
+        :type s: str
+        :rtype: int
+        &quot;&quot;&quot;
+        n = len(s)
+        dp = [[1] * 2 for _ in range(n)]
+        for j in xrange(1, len(s)):
+            for i in reversed(xrange(0, j)):
+                if s[i] == s[j]:
+                    dp[i][j%2] = 2 + dp[i + 1][(j - 1)%2] if i + 1 &amp;lt;= j - 1 else 2
+                else:
+                    dp[i][j%2] = max(dp[i + 1][j%2], dp[i][(j - 1)%2])
+        return dp[0][(n-1)%2]
+</code></pre>"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span><span class="hljs-params">(object)</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">longestPalindromeSubseq</span><span class="hljs-params">(self, s)</span>:</span>
+        <span class="hljs-string">"""
+        :type s: str
+        :rtype: int
+        """</span>
+        n = len(s)
+        dp = [[<span class="hljs-number">1</span>] * <span class="hljs-number">2</span> <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> range(n)]
+        <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> xrange(<span class="hljs-number">1</span>, len(s)):
+            <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> reversed(xrange(<span class="hljs-number">0</span>, j)):
+                <span class="hljs-keyword">if</span> s[i] == s[j]:
+                    dp[i][j%<span class="hljs-number">2</span>] = <span class="hljs-number">2</span> + dp[i + <span class="hljs-number">1</span>][(j - <span class="hljs-number">1</span>)%<span class="hljs-number">2</span>] <span class="hljs-keyword">if</span> i + <span class="hljs-number">1</span> &lt;= j - <span class="hljs-number">1</span> <span class="hljs-keyword">else</span> <span class="hljs-number">2</span>
+                <span class="hljs-keyword">else</span>:
+                    dp[i][j%<span class="hljs-number">2</span>] = max(dp[i + <span class="hljs-number">1</span>][j%<span class="hljs-number">2</span>], dp[i][(j - <span class="hljs-number">1</span>)%<span class="hljs-number">2</span>])
+        <span class="hljs-keyword">return</span> dp[<span class="hljs-number">0</span>][(n-<span class="hljs-number">1</span>)%<span class="hljs-number">2</span>]
+</code></pre><h5 id="513"><a name="513" href="#513"></a>513</h5><p>给定一颗二叉树，求这棵树最底层最左边节点的值。如下:</p><p><img src="http://i2.muimg.com/567571/cf70976569b520db.png" alt=""></p><p>遍历，采用广度优先遍历，设法在每一层上记录下当前层的个数，并且记录下当前层最左侧的值</p><pre class="python hljs"><code class="python" data-origin="<pre><code class=&quot;python&quot;>class TreeNode(object):
+     def __init__(self, x):
+         self.val = x
+         self.left = None
+         self.right = None
+
+class Solution(object):
+    def findBottomLeftValue(self, root):
+        &quot;&quot;&quot;
+        :type root: TreeNode
+        :rtype: int
+        &quot;&quot;&quot;
+        res = 0
+        list = []
+        list.append(root)
+        while(len(list)&amp;gt;0):
+            size = len(list)
+            tmp = list.pop(0)
+            res = tmp.val
+            if tmp.left!=None:
+                list.append(tmp.left)
+            if tmp.right!=None:
+                list.append(tmp.right)
+            size = size -1
+            while size &amp;gt;0:
+                tmp = list.pop(0)
+                if tmp.left!=None:
+                    list.append(tmp.left)
+                if tmp.right!=None:
+                    list.append(tmp.right)
+                size = size -1
+        return res
+</code></pre>"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TreeNode</span><span class="hljs-params">(object)</span>:</span>
+     <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, x)</span>:</span>
+         self.val = x
+         self.left = <span class="hljs-keyword">None</span>
+         self.right = <span class="hljs-keyword">None</span>
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span><span class="hljs-params">(object)</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">findBottomLeftValue</span><span class="hljs-params">(self, root)</span>:</span>
+        <span class="hljs-string">"""
+        :type root: TreeNode
+        :rtype: int
+        """</span>
+        res = <span class="hljs-number">0</span>
+        list = []
+        list.append(root)
+        <span class="hljs-keyword">while</span>(len(list)&gt;<span class="hljs-number">0</span>):
+            size = len(list)
+            tmp = list.pop(<span class="hljs-number">0</span>)
+            res = tmp.val
+            <span class="hljs-keyword">if</span> tmp.left!=<span class="hljs-keyword">None</span>:
+                list.append(tmp.left)
+            <span class="hljs-keyword">if</span> tmp.right!=<span class="hljs-keyword">None</span>:
+                list.append(tmp.right)
+            size = size -<span class="hljs-number">1</span>
+            <span class="hljs-keyword">while</span> size &gt;<span class="hljs-number">0</span>:
+                tmp = list.pop(<span class="hljs-number">0</span>)
+                <span class="hljs-keyword">if</span> tmp.left!=<span class="hljs-keyword">None</span>:
+                    list.append(tmp.left)
+                <span class="hljs-keyword">if</span> tmp.right!=<span class="hljs-keyword">None</span>:
+                    list.append(tmp.right)
+                size = size -<span class="hljs-number">1</span>
+        <span class="hljs-keyword">return</span> res
+</code></pre><h5 id="77"><a name="77" href="#77"></a>77</h5><p>给定一个n和k，求出从1-n中选出k个数字的组合。不要重复的，每个组合的顺序都是从小数字到大数字。<br>如给定n=4，k=2，则输出:<br>[<br>[1,2],[1,3],[1,4],[2,3],[2,4],[3,4]<br>]</p><p>思路:<br>回溯法。一种递归方式。<br>从第一个元素开始一直向list里加，等到list内个数等于k了则将这个结果存储在最后要输出的result里。而后后退一步，称为回溯。即假设目前走到1-3,个数已经等于2那么就将1-3存储到result里并且回退到上一个循环。看程序应该会比较好理解一些。</p><pre class="python hljs"><code class="python" data-origin="<pre><code class=&quot;python&quot;>class Solution(object):
+    def backtrack(self,nums,k,list,result):
+        if len(list)==k:
+            result.append(list)
+        else:
+            tmpindex = 0
+            if len(list)!=0:
+                tmpindex=list[len(list)-1]
+            for i in range(tmpindex,len(nums)):
+                list.append(nums[i])
+                listtmp = [n for n in list]
+                self.backtrack(nums,k,listtmp,result)
+                list=list[0:-1]
+    def combine(self,n,k):
+        nums = [i+1 for i in range(n)]
+        list = []
+        result = []
+        self.backtrack(nums,k,list,result)
+        return result
+</code></pre>"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span><span class="hljs-params">(object)</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">backtrack</span><span class="hljs-params">(self,nums,k,list,result)</span>:</span>
+        <span class="hljs-keyword">if</span> len(list)==k:
+            result.append(list)
+        <span class="hljs-keyword">else</span>:
+            tmpindex = <span class="hljs-number">0</span>
+            <span class="hljs-keyword">if</span> len(list)!=<span class="hljs-number">0</span>:
+                tmpindex=list[len(list)-<span class="hljs-number">1</span>]
+            <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(tmpindex,len(nums)):
+                list.append(nums[i])
+                listtmp = [n <span class="hljs-keyword">for</span> n <span class="hljs-keyword">in</span> list]
+                self.backtrack(nums,k,listtmp,result)
+                list=list[<span class="hljs-number">0</span>:-<span class="hljs-number">1</span>]
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">combine</span><span class="hljs-params">(self,n,k)</span>:</span>
+        nums = [i+<span class="hljs-number">1</span> <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(n)]
+        list = []
+        result = []
+        self.backtrack(nums,k,list,result)
+        <span class="hljs-keyword">return</span> result
+</code></pre><h4 id="#"><a name="#" href="##"></a>#</h4><p>二分查找。<br>看起来很简单却很容易出错的问题。<br>首先要看清题意给出的意思是lowerbound和upperbound。lowerbound是指返回给定有序数组里大于等于目标值的最小索引，upperbound指给出数组里小于等于目标值的最大索引。<br>两者区别何在，例如[1,2,4,5,5,7,8]里找6，lowerbound返回7的位置，upper返回5的位置。并且lowerbound可以返回位置为length，而upperbound可以返回-1索引。并且lower意思是最小索引，upper是最大索引。lower返回left+1，upper返回right-1.<br>这个可以背下来的。<br>两者的java程序;</p><pre class="java hljs"><code class="java" data-origin="<pre><code class=&quot;java&quot;>public static int lowerBound(int[] nums, int target) {
+    if (nums == null || nums.length == 0) return -1;
+    int lb = -1, ub = nums.length;
+    while (lb + 1 &amp;lt; ub) {
+    int mid = lb + (ub - lb) / 2;
+    if (nums[mid] &amp;lt; target) {
+    lb = mid;
+    } else {
+    ub = mid;
+    }
+    } 
+    return lb + 1;
+} /
+*
+* nums[index] &amp;lt;= target, max(index)
+*/
+public static int upperBound(int[] nums, int target) {
+    if (nums == null || nums.length == 0) return -1;
+    int lb = -1, ub = nums.length;
+    while (lb + 1 &amp;lt; ub) {
+    int mid = lb + (ub - lb) / 2;
+    if (nums[mid] &amp;gt; target) {
+    ub = mid;} 
+    else {
+    lb = mid;
+}
+} return ub - 1;
+}
+</code></pre>"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> <span class="hljs-title">lowerBound</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] nums, <span class="hljs-keyword">int</span> target)</span> </span>{
+    <span class="hljs-keyword">if</span> (nums == <span class="hljs-keyword">null</span> || nums.length == <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> -<span class="hljs-number">1</span>;
+    <span class="hljs-keyword">int</span> lb = -<span class="hljs-number">1</span>, ub = nums.length;
+    <span class="hljs-keyword">while</span> (lb + <span class="hljs-number">1</span> &lt; ub) {
+    <span class="hljs-keyword">int</span> mid = lb + (ub - lb) / <span class="hljs-number">2</span>;
+    <span class="hljs-keyword">if</span> (nums[mid] &lt; target) {
+    lb = mid;
+    } <span class="hljs-keyword">else</span> {
+    ub = mid;
+    }
+    } 
+    <span class="hljs-keyword">return</span> lb + <span class="hljs-number">1</span>;
+} /
+*
+* nums[index] &lt;= target, max(index)
+*/
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> <span class="hljs-title">upperBound</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] nums, <span class="hljs-keyword">int</span> target)</span> </span>{
+    <span class="hljs-keyword">if</span> (nums == <span class="hljs-keyword">null</span> || nums.length == <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> -<span class="hljs-number">1</span>;
+    <span class="hljs-keyword">int</span> lb = -<span class="hljs-number">1</span>, ub = nums.length;
+    <span class="hljs-keyword">while</span> (lb + <span class="hljs-number">1</span> &lt; ub) {
+    <span class="hljs-keyword">int</span> mid = lb + (ub - lb) / <span class="hljs-number">2</span>;
+    <span class="hljs-keyword">if</span> (nums[mid] &gt; target) {
+    ub = mid;} 
+    <span class="hljs-keyword">else</span> {
+    lb = mid;
+}
+} <span class="hljs-keyword">return</span> ub - <span class="hljs-number">1</span>;
+}
 </code></pre>
 
 <footer style="position:fixed; font-size:.8em; text-align:right; bottom:0px; margin-left:-25px; height:20px; width:100%;">generated by <a href="http://pad.haroopress.com" target="_blank">haroopad</a></footer>
